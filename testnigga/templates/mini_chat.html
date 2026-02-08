@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мини-чат 💬</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container section-light">
+    <h1>Мини-чат 💬</h1>
+
+    <form method="post">
+        <input type="text" name="username" placeholder="Твоё имя" required>
+        <input type="text" name="message" placeholder="Сообщение" required>
+        <button type="submit">Отправить</button>
+    </form>
+
+    <div style="margin-top:20px;">
+        <h3>Сообщения:</h3>
+        {% for msg in messages %}
+            {% if msg.strip() %}
+                <p>{{ msg|safe }}</p>
+                <hr>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <p><a href="/">← Назад</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav style="text-align:center; margin-bottom:25px;margin-left:-15px;">
+        <a href="/">Главная</a> |
+        <a href="/about">О сайте</a> |
+        <a href="/projects">Проекты</a> |
+        <a href="/contact">Контакты</a> |
+        <a href="/about_me">О себе</a>
+    </nav>
+
+
+
+    <div class="container">
+        <h1>Контакты</h1>
+        <p>Напиши мне сообщение:</p>
+
+        <form method="post">
+            <input type="text" name="email" placeholder="Твой email" required>
+            <textarea name="message" placeholder="Сообщение" required></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+
+        {% if message_sent %}
+            <p style="color: #ff9800; text-align:center;">Сообщение отправлено! ✅</p>
+        {% endif %}
+
+        <p><a href="/">← Назад</a></p>
+    </div>
+    <script>
+document.querySelector("form").addEventListener("submit", function(e) {
+    const email = this.email.value.trim();
+    const message = this.message.value.trim();
+    if(email === "" || message === "") {
+        alert("Пожалуйста, заполните все поля!");
+        e.preventDefault();
+    }
+});
+</script>
+
+</body>
+</html>
+
+
