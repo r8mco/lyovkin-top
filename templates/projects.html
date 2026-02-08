@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проекты</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+   <nav>
+    <a href="/">Главная</a> |
+    <a href="/about">О сайте</a> |
+    <a href="/projects">Проекты</a> |
+    <a href="/contact">Контакты</a> |
+    <a href="/about_me">О себе</a>
+</nav>
+
+<div class="container section-dark">
+    <h1>Мои проекты 🚀</h1>
+
+    <div class="projects-grid">
+    {% for project in projects %}
+    <div class="project-card">
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
+        <a href="{{ project.link }}" class="btn">
+            {% if project.status == "В разработке" %}Скоро{% else %}Открыть{% endif %}
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
